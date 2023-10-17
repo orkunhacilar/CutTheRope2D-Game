@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Merkez_1
+  - Merkez_2
   layers:
   - Default
   - TransparentFX

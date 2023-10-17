@@ -11,7 +11,9 @@ public class Ip_Yonetimi : MonoBehaviour
 
     public int BaglantiSayisi = 5;
 
-    public GameObject BaglantiPrefab;
+   
+
+    public GameObject[] BaglantiHavuzu;
     
     void Start()
     {
@@ -25,17 +27,19 @@ public class Ip_Yonetimi : MonoBehaviour
 
         for (int i = 0; i < BaglantiSayisi; i++)
         {
-            GameObject Baglanti = Instantiate(BaglantiPrefab, transform);
-            HingeJoint2D joint = Baglanti.GetComponent<HingeJoint2D>();
+            BaglantiHavuzu[i].SetActive(true);
+            
+
+            HingeJoint2D joint = BaglantiHavuzu[i].GetComponent<HingeJoint2D>();
             joint.connectedBody = OncekiBaglanti;
 
             if(i < BaglantiSayisi -1)
             {
-                OncekiBaglanti = Baglanti.GetComponent<Rigidbody2D>();
+                OncekiBaglanti = BaglantiHavuzu[i].GetComponent<Rigidbody2D>();
             }
             else // BURASI
             {
-                _Top.SonZinciriBagla(Baglanti.GetComponent<Rigidbody2D>()); //Zincirleri Bagladik sira son zincere topu baglamada.
+                _Top.SonZinciriBagla(BaglantiHavuzu[i].GetComponent<Rigidbody2D>()); //Zincirleri Bagladik sira son zincere topu baglamada.
             }
         }
     }
