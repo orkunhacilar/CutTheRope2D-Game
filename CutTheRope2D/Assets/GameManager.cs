@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Top _Top;
+    [SerializeField] private Top _Top;
 
-   
+    [SerializeField] private GameObject[] IP_merkezleri;
+
     void Update()
     {
 
@@ -26,9 +27,20 @@ public class GameManager : MonoBehaviour
 
 
 
-                    _Top.HingeKontrol["Merkez_1"].enabled = false;
+                    //_Top.HingeKontrol["Merkez_1"].enabled = false;  OPSIYONEL
                     //Kodlari incelersen anlarsin. TOPUN HingeJoint2Dsini kapatiyoruz.
                     //Merkez_1 Adı altında yaratılan Ip_Yonetimi scriptinde gerceklesen son halka ile top arasinda olan baglantisi burda kopmus oluyor. Cunku topunkini kapadik
+
+                    foreach (var item in IP_merkezleri)
+                    {
+                        if (item.GetComponent<Ip_Yonetimi>().HingeAdi == "Merkez_1")
+                        { 
+                            foreach (var item2 in item.GetComponent<Ip_Yonetimi>().BaglantiHavuzu)
+                            {
+                                item2.SetActive(false); // Havuz olarak Yarattigim butun zincirleri o ip merkezindeki kapat dedik.
+                            }
+                        }
+                    }
 
                 }
                 if (hit.collider.CompareTag("Merkez_2")) //tagi merkez_2 olan zincirlere denk gelirsen
@@ -36,9 +48,20 @@ public class GameManager : MonoBehaviour
                     hit.collider.gameObject.SetActive(false);
 
 
-                    _Top.HingeKontrol["Merkez_2"].enabled = false;
+                    //_Top.HingeKontrol["Merkez_2"].enabled = false; OPSIYONEL
                     //Kodlari incelersen anlarsin. TOPUN HingeJoint2Dsini kapatiyoruz.
                     //Merkez_2 Adı altında yaratılan Ip_Yonetimi scriptinde gerceklesen son halka ile top arasinda olan baglantisi burda kopmus oluyor. Cunku topunkini kapadik
+
+                    foreach (var item in IP_merkezleri)
+                    {
+                        if (item.GetComponent<Ip_Yonetimi>().HingeAdi == "Merkez_2")
+                        {
+                            foreach (var item2 in item.GetComponent<Ip_Yonetimi>().BaglantiHavuzu)
+                            {
+                                item2.SetActive(false); // Havuz olarak Yarattigim butun zincirleri o ip merkezindeki kapat dedik.
+                            }
+                        }
+                    }
                 }
             }
             

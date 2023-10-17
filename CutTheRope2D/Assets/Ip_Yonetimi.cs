@@ -5,11 +5,11 @@ using UnityEngine;
 public class Ip_Yonetimi : MonoBehaviour
 {
 
-    public Rigidbody2D Ilk_Kanca;
+    [SerializeField] private Rigidbody2D Ilk_Kanca;
 
-    public Top _Top;
+    [SerializeField] private Top _Top;
 
-    public int BaglantiSayisi = 5;
+    [SerializeField] private int BaglantiSayisi = 5;
 
     public string HingeAdi;
 
