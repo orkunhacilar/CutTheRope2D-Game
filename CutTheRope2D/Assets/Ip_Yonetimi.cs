@@ -11,6 +11,8 @@ public class Ip_Yonetimi : MonoBehaviour
 
     public int BaglantiSayisi = 5;
 
+    public string HingeAdi;
+
    
 
     public GameObject[] BaglantiHavuzu;
@@ -39,7 +41,7 @@ public class Ip_Yonetimi : MonoBehaviour
             }
             else // BURASI
             {
-                _Top.SonZinciriBagla(BaglantiHavuzu[i].GetComponent<Rigidbody2D>()); //Zincirleri Bagladik sira son zincere topu baglamada.
+                _Top.SonZinciriBagla(BaglantiHavuzu[i].GetComponent<Rigidbody2D>(), HingeAdi); //Zincirleri Bagladik sira son zincere topu baglamada.
             }
         }
     }
