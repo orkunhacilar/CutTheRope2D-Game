@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     
 
     [SerializeField] private GameObject[] IP_merkezleri;
+    [SerializeField] private int ToplamTopSayisi;
+    [SerializeField] private int DevrilmesiGerekenObjeSayisi;
 
     void Update()
     {
@@ -35,9 +37,6 @@ public class GameManager : MonoBehaviour
             
         }
     }
-
-
-
     void ZincirTeknikIslem(RaycastHit2D hit, string HingeAdi)
     {
         hit.collider.gameObject.SetActive(false);
@@ -53,4 +52,41 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void TopDustu()
+    {
+        ToplamTopSayisi--;
+        if (ToplamTopSayisi == 0)
+        {
+            if (DevrilmesiGerekenObjeSayisi > 0)
+            {
+                Debug.Log("LOSE EKRANI");
+            }
+            else if (DevrilmesiGerekenObjeSayisi == 0)
+            {
+                Debug.Log("win ekrani");
+            }
+        }
+        else
+        {
+            if (DevrilmesiGerekenObjeSayisi == 0)
+            {
+                Debug.Log("win ekrani");
+            }
+        }
+       
+    }
+    public void HedefObjeDustu()
+    {
+        DevrilmesiGerekenObjeSayisi--;
+        if (ToplamTopSayisi == 0 && DevrilmesiGerekenObjeSayisi == 0)
+        {
+            Debug.Log("win ekrani");
+        }
+        else if (ToplamTopSayisi == 0 && DevrilmesiGerekenObjeSayisi > 0)
+        {
+            Debug.Log("lose ekrani");
+        }
+    }
+
 }
